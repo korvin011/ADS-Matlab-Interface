@@ -1,0 +1,42 @@
+##############################################################################
+* Vectorset name: "AC1.AC"
+* Vectorset number of attributes: 0
+* Independent number of variables: 1
+    0: "freq" 0 r
+	number of attributes: 1
+	    "flags" = "frequency type=real indep=yes mixop=neg"
+* Dependent number of variables: 3
+    0: "Vout" 0 c
+	number of attributes: 1
+	    "flags" = "voltage type=complex indep=no"
+    1: "SRC1.i" 0 c
+	number of attributes: 1
+	    "flags" = "current type=complex indep=no"
+    2: "Iout.i" 0 c
+	number of attributes: 1
+	    "flags" = "current type=complex indep=no"
+----------
+* Leaf node name: "DN=1=0"
+* Leaf node number of attributes: 0
+* Number of dependents: 3
+* Number of points: 1
+0: 3000000000
+(0.75, 0)
+(-0.25, 0)
+(0.25, 0)
+##############################################################################
+* Vectorset name: "aele_0.AC1"
+* Vectorset number of attributes: 0
+* Independent number of variables: 1
+    0: "freq" 0 r
+	number of attributes: 0
+* Dependent number of variables: 1
+    0: "Pout.p" 0 r
+	number of attributes: 0
+----------
+* Leaf node name: "DN=1=1"
+* Leaf node number of attributes: 0
+* Number of dependents: 1
+* Number of points: 1
+0: 3000000000
+0.09375

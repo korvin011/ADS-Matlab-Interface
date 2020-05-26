@@ -1,0 +1,46 @@
+
+Options ResourceUsage=yes UseNutmegFormat=no EnableOptim=no TopDesignName="MSLine_lib:MSLine:schematic" DcopOutputNodeVoltages=yes DcopOutputPinCurrents=yes DcopOutputAllSweepPoints=no DcopOutputDcopType=0
+define SW_BPF_MS ( P1  P2 ) 
+;parameters 
+model MSub1 MSUB H=10.0 mil Er=9.6 Mur=1 Cond=1.0E+50 Hu=3.9e+034 mil T=0 mil TanD=0 Rough=0 mil DielectricLossModel=1 FreqForEpsrTanD=1.0 GHz LowFreqForTanD=1.0 kHz HighFreqForTanD=1.0 THz RoughnessModel=2 
+MCFIL:CLin4  N__2 P2 Subst="MSub1" W=6.867 mil S=2.78 mil L=565.091 mil 
+MCFIL:CLin3  N__3 N__2 Subst="MSub1" W=9.618 mil S=13.01 mil L=550.613 mil 
+MCFIL:CLin2  N__4 N__3 Subst="MSub1" W=9.618 mil S=s2 L=550.613 mil 
+MCFIL:CLin1  P1 N__4 Subst="MSub1" W=6.867 mil S=s1 L=565.091 mil 
+end SW_BPF_MS
+define V_Probe ( P1 ) 
+parameters 
+Short:Short1  P1 net Mode=0 SaveCurrent=no 
+end V_Probe
+SW_BPF_MS:BPF1  N__1 N__3 
+S_Param:SP1 CalcS=yes CalcY=no CalcZ=no GroupDelayAperture=1e-4 FreqConversion=no FreqConversionPort=1 StatusLevel=2 CalcNoise=no SortNoise=0 BandwidthForNoise=1.0 Hz DevOpPtLevel=0 \
+SweepVar="freq" SweepPlan="SP1_stim" OutputPlan="SP1_Output" 
+
+SweepPlan: SP1_stim Start=1.0 GHz Stop=10.0 GHz Step=100 MHz 
+
+OutputPlan:SP1_Output \
+      Type="Output" \
+      UseEquationNestLevel=yes \
+      EquationNestLevel=2 \
+      UseSavedEquationNestLevel=yes \
+      SavedEquationNestLevel=2
+
+#load "python","LinearCollapse"
+Component Module="LinearCollapse" Type="ModelExtractor" NetworkRepresentation=2
+
+;#@# autodisplay="S_Params_Quad_dB_Smith"
+Port:Term1  N__1 0 Num=1 Z=50 Ohm Noise=yes 
+Port:Term2  N__0 0 Num=2 Z=50 Ohm Noise=yes 
+
+s1=2.78 mil
+s2=13.01 mil
+ParamSweep:Sweep1 SimInstanceName[1]="SP1" StatusLevel=2 SweepVar="s1" SweepPlan="Sweep1_stim" 
+
+SweepPlan: Sweep1_stim Start=1.5 mil Stop=4 mil Step=0.1 mil 
+
+Short:I_Probe1  N__3 N__0 Mode=0 SaveCurrent=yes 
+V_Probe:V_Probe1  N__3 
+ParamSweep:Sweep2 SimInstanceName[1]="Sweep1" StatusLevel=2 SweepVar="s2" SweepPlan="Sweep2_stim" 
+
+SweepPlan: Sweep2_stim Start=10 mil Stop=15 mil Step=0.5 mil 
+

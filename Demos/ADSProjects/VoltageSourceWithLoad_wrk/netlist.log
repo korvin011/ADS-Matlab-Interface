@@ -1,0 +1,36 @@
+
+Options ResourceUsage=yes UseNutmegFormat=no EnableOptim=no TopDesignName="VoltageSourceWithLoad_lib:SingleFreq:schematic" DcopOutputNodeVoltages=yes DcopOutputPinCurrents=yes DcopOutputAllSweepPoints=no DcopOutputDcopType=0
+
+;#@# autodisplay="GS_AC"
+AC:AC1 CalcNoise=no SortNoise=0 NoiseThresh=0 BandwidthForNoise=1 Hz FreqConversion=no UseFiniteDiff=no StatusLevel=2 OutputBudgetIV=no DevOpPtLevel=0 \
+OutputPlan="AC1_Output" Freq=SimFreq 
+
+OutputPlan:AC1_Output \
+      Type="Output" \
+      UseNodeNestLevel=yes \
+      NodeNestLevel=2 \
+      UseEquationNestLevel=yes \
+      EquationNestLevel=2 \
+      UseSavedEquationNestLevel=yes \
+      SavedEquationNestLevel=2 \
+      UseDeviceCurrentNestLevel=no \
+      DeviceCurrentNestLevel=0 \
+      DeviceCurrentDeviceType="All" \
+      DeviceCurrentSymSyntax=yes \
+      UseCurrentNestLevel=yes \
+      CurrentNestLevel=999 \
+      UseDeviceVoltageNestLevel=no \
+      DeviceVoltageNestLevel=0 \
+      DeviceVoltageDeviceType="All"
+
+R:Rload  Vout 0 R=3 Ohm Noise=yes 
+Short:Iout  N__5 Vout Mode=0 SaveCurrent=yes 
+#uselib "ckt" , "P_Probe"
+P_Probe:Pout  N__2 N__5 
+
+SimFreq=1 GHz
+Vin=1
+V_Source:SRC1  N__6 0 Type="V_AC" Vdc=0.0 V Vac=polar(Vin,0) V Freq=SimFreq V_Noise=0 uV SaveCurrent=1 
+R:Rsrc  N__2 N__6 R=1 Ohm Noise=yes 
+
+

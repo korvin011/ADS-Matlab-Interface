@@ -1,0 +1,157 @@
+
+hpeesofsim (*) 450.shp Jan 21 2016, MINT version 4
+    (64-bit windows built: 01/21/16 15:34:19)
+Copyright 1995 - 2015 Keysight Technologies, 1989-2016.
+
+Parsing the netlist...
+Flattening the netlist...
+
+Warning detected by hpeesofsim in Substrate model during netlist flattening.
+    Simulations referencing substrate `BPF1.MSub1' will not include metal loss
+    because metal thickness is zero.
+
+Warning detected by hpeesofsim in topology check during circuit set up.
+    Number of nodes with only one device attached (topology corrected): 1
+
+
+Error detected by hpeesofsim during circuit set up `Sweep2'.
+    An appropriate license for linear features is not available.  This
+    feature must be licensed before it can be used.
+        FlexLM error message:
+        Linear Simulator
+        
+        You do not have a license to run this feature.
+        
+        Below is a list of products that contain this feature:
+        
+        W2215BP ADS Core+Layout+MomentumG2+FEM
+        W2215BT ADS Core+Layout+MomentumG2+FEM
+        W2250BT ADS Inclusive
+        W2250BP ADS Inclusive
+        W2030UT EEsof University Bundle time-based  license
+        E8900ECS Emergency Codeword System (ECS) ADS RFDE EMDS GG AMDS
+        E8900PE ADS Premier Student License
+        W2130UT EEsof University Bundle with EMPro
+        W2130UE EEsof University Bundle with EMPro Student License
+        W2030UE EEsof University Bundle time-based Student License
+        E8900PN ADS Premier Network University
+        E8900P ADS Premier University
+        W2200F ADS All Inclusive
+        W2130UX UNIVERSITY DONATION (EESOF INCLUSIVE)
+        W2030UX EESOF EDA MULTI-PRODUCT DONATION BUNDLE
+        E8900PX UNIVERSITY DONATION(ADS/PREMIER)
+        E8900PP ADS Premier University Donation
+        W2030UU EEsof University Bundle time-based  license
+        W2130UU EEsof University Bundle with EMPro
+        W2222BT ADS signal integrity inclusive bundle
+        W2222BP ADS signal integrity inclusive bundle
+        W2209BT ADS Core+CircuitSim+Layout+MomentumG2+Ptolemy+VerilogA+Mature Wireless Libraries+EMDS G2
+        W2209BP ADS Core+CircuitSim+Layout+MomentumG2+Ptolemy+VerilogA+Mature Wireless Libraries+EMDS G2
+        W2204BP ADS Core+CircuitSim+Layout+MomentumG2+Ptolemy+VerilogA
+        W2204BT ADS Core+CircuitSim+Layout+MomentumG2+Ptolemy+VerilogA
+        W2214BP ADS Core+Layout+CircuitSim+MomentumG2
+        W2214BT ADS Core+Layout+CircuitSim+MomentumG2
+        W2232BT ADS Core+CircuitSim+Ptolemy+Mature Wireless Libraries
+        W2232BP ADS Core+CircuitSim+Ptolemy+Mature Wireless Libraries
+        W2208BP ADS Core+CircuitSim+Layout+MomentumG2+Ptolemy+VerilogA+Mature Wireless Libraries
+        W2208BT ADS Core+CircuitSim+Layout+MomentumG2+Ptolemy+VerilogA+Mature Wireless Libraries
+        W2207BP ADS Core+CircuitSim+Layout+MomentumG2+Ptolemy
+        W2207BT ADS Core+CircuitSim+Layout+MomentumG2+Ptolemy
+        W2200BT ADS Core
+        W2200BP ADS Core
+        W2233BP ADS Verification Bundle
+        W2233BT ADS Verification Bundle
+        W2200BPRFMD ADS Core experimental
+        W2200BEXP ADS Core experimental
+        W1315BT ADS Enterprise+EM Bundle
+        W1112BT GoldenGate+ADS Core+CircuitSim+Layout+MomentumG2+Ptolemy+VerilogA
+        W1112BP GoldenGate+ADS Core+CircuitSim+Layout+MomentumG2+Ptolemy+VerilogA
+        W2013BT GoldenGate+ADS Core+CircuitSim+Layout+MomentumG2+Ptolemy+VerilogA+Mature Wireless Libraries
+        W2013BP GoldenGate+ADS Core+CircuitSim+Layout+MomentumG2+Ptolemy+VerilogA+Mature Wireless Libraries
+        W2030UT EEsof University Bundle time-based  license
+        W2013F GoldenGate All Inclusive
+        EVLW2013F GoldenGate Inclusive Evaluation
+        E8900ECS Emergency Codeword System (ECS) ADS RFDE EMDS GG AMDS
+        W2130UT EEsof University Bundle with EMPro
+        W2130UE EEsof University Bundle with EMPro Student License
+        W2030UE EEsof University Bundle time-based Student License
+        W2011U GoldenGate Donation
+        W2011UN GoldenGate Donation
+        W2011UE GoldenGate Donation
+        W2011UX GoldenGate Donation
+        W2130UX UNIVERSITY DONATION (EESOF INCLUSIVE)
+        W2030UX EESOF EDA MULTI-PRODUCT DONATION BUNDLE
+        W2011UP GoldenGate Donation
+        W2030UU EEsof University Bundle time-based  license
+        W2130UU EEsof University Bundle with EMPro
+        W2218BP GoldenGate Solo+ADS Core+CircuitSim
+        W2218BT GoldenGate Solo+ADS Core+CircuitSim
+        W2217BP ADS Core+Layout+Harmonic Balance+Circuit Envelope+MomentumG2+FEM
+        W2217BT ADS Core+Layout+Harmonic Balance+Circuit Envelope+MomentumG2+FEM
+        W2216BP ADS Core+Layout+Harmonic Balance+Circuit Envelope+MomentumG2
+        W2216BT ADS Core+Layout+Harmonic Balance+Circuit Envelope+MomentumG2
+        W2206BT ADS Core+Layout+Harmonic Balance+MomentumG2+EMDS G2
+        W2206BP ADS Core+Layout+Harmonic Balance+MomentumG2+EMDS G2
+        W2202BT ADS Core+Layout+Harmonic Balance
+        W2202BP ADS Core+Layout+Harmonic Balance
+        W2205BT ADS Core+Layout+Harmonic Balance+MomentumG2
+        W2205BP ADS Core+Layout+Harmonic Balance+MomentumG2
+        W2213BT ADS Core+Transient Convolution+Layout+MomentumG2+Harmonic Balance
+        W2213BP ADS Core+Transient Convolution+Layout+MomentumG2+Harmonic Balance
+        W2250BT ADS Inclusive
+        W2250BP ADS Inclusive
+        W2201BT ADS Core+Layout
+        W2201BP ADS Core+Layout
+        W2201BPRFMD ADS Core Layout Bundled experimental
+        W2201BEXP ADS Core Layout Bundled experimental
+        W2203BT ADS Core+Layout+MomentumG2
+        W2203BP ADS Core+Layout+MomentumG2
+        W2231BT ADS Core+Ptolemy
+        W2231BP ADS Core+Ptolemy
+        W2212BT ADS Core+Transient Convolution+Layout+MomentumG2+EMDS G2+Ptolemy
+        W2212BP ADS Core+Transient Convolution+Layout+MomentumG2+EMDS G2+Ptolemy
+        W2219BP ADS Core, Transient Convolution, Layout, Momentum G2, Controlled Impedance Line Designer Bundle
+        W2219BT ADS Core, Transient Convolution, Layout, Momentum G2, Controlled Impedance Line Designer Bundle
+        W2210BT ADS Core+Transient Convolution
+        W2210BP ADS Core+Transient Convolution
+        W2220BP ADS core, CILD, Transconv
+        W2220BT ADS core, CILD, Transconv
+        W2221BT ADS Core, Transconv, CILD, DDR Bus Sim
+        W2221BP ADS Core, Transconv, CILD, DDR Bus Sim
+        W2211BT ADS Core+Transient Convolution+Layout+MomentumG2
+        W2211BP ADS Core+Transient Convolution+Layout+MomentumG2
+        E8900U ADS Standard University
+        E8900UN ADS Standard Network University
+        E8900UE ADS Standard Student License
+        E8900UX UNIVERSITY DONATION (ADS)
+        E8900UP ADS University Donation
+        W2013U GoldenGate Inclusive Donation
+        W2013UN GoldenGate Inclusive Network Donation
+        W2013UE GoldenGate Inclusive Student License
+        W2013UX GoldenGate Enterprise University Donation
+        W2013UP GoldenGate Enterprise University Donation
+        fb_test01 Test of new feature bit structure (Note:  added ADS as a product family for testing 8/20/2013)
+        W2306EP Linear Simulator Element
+        W2306ET Linear Simulator Element time base
+        
+        Possible Causes:
+        1. A license for the feature was not purchased.
+        2. The feature could not be found in the license file or on the server or is invalid.
+        3. You are pointing to the wrong license file or server.
+        4. You are not specifying a port number with the server in "port@host" format. 
+        5. The distributed simulation on the remote computer(s) does not use the same license server(s) as the local computer.
+        
+        Troubleshooting Tips:
+        1. Check the license file or server you are trying to use contains the right licenses for this product.
+        2. Verify that you are pointing to the correct server and license file using the wizard.
+        3. Verify that you do not have a license preference set to a feature that has been removed on the server.
+        4. Use the License Manager's Licenses tab to view your licenses and available features.
+        
+        License path:  27710@keysight.mc2.chalmers.se
+
+
+
+
+Resource usage:
+  Total stopwatch time     =    30.48 seconds.
+

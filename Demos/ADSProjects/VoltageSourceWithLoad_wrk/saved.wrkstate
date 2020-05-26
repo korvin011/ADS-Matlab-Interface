@@ -1,0 +1,8 @@
+<!DOCTYPE SaveWorkspaceState>
+<SaveWorkspaceState>
+    <Windows>
+        <Schematic x1="-8" width="2560" height="1417" lib="VoltageSourceWithLoad_lib" view="schematic" cell="SingleFreq" y1="-8"/>
+        <DDS name="SingleFreq.dds"/>
+    </Windows>
+    <MainWindowTab tab="1"/>
+</SaveWorkspaceState>

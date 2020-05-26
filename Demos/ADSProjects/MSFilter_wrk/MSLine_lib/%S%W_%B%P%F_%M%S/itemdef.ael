@@ -1,0 +1,2 @@
+// Copyright 2010 - 2013 Keysight Technologies, Inc  
+create_item("SW_BPF_MS","Microstrip Bandpass Filter","BPF",16,-1,NULL,"Component Parameters",NULL,"%43?global %;%d:%t %# %44?0%:%31?%C%:_net%c%;%;%e %b%r%8?%29?%:%30?%p %:%k%?[%1i]%;=%p %;%;%;%e%e","SW_BPF_MS","%t%b%r%38?%:\n%39?all_parm%A%:%30?%s%:%k%?[%1i]%;=%s%;%;%;%e%e%;","SW_BPF_MS",3,NULL,0);

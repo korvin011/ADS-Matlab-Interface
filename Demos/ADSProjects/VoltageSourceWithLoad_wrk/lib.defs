@@ -1,0 +1,3 @@
+INCLUDE $HPEESOF_DIR/oalibs/analog_rf.defs
+DEFINE VoltageSourceWithLoad_lib VoltageSourceWithLoad_lib
+ASSIGN VoltageSourceWithLoad_lib libMode shared

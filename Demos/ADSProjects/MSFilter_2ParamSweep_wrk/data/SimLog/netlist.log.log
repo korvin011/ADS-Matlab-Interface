@@ -1,0 +1,14 @@
+
+hpeesofsim (*) 450.shp Jan 21 2016, MINT version 4
+    (64-bit windows built: 01/21/16 15:34:19)
+Copyright 1995 - 2015 Keysight Technologies, 1989-2016.
+
+Parsing the netlist...
+Flattening the netlist...
+
+Error detected by hpeesofsim during netlist flattening.
+    No Simulation Component specified.
+
+Flushing data (please wait) ...
+     ... data flush done.
+

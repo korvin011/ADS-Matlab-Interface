@@ -1,0 +1,3 @@
+INCLUDE $HPEESOF_DIR/oalibs/analog_rf.defs
+DEFINE MSLine_lib MSLine_lib
+ASSIGN MSLine_lib libMode shared
