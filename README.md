@@ -7,9 +7,9 @@ Keysight Advanced Design System (ADS) to Matlab interface.
 This **TADSInterface** class allows for communication with Keysight Advanced Design System (ADS) from within MATLAB. 
 It has been developed and tested **under Windows platform**, but small modifications are expected to adapt it for Linux.
 
-> **Warning!** The interface heavily uses **undocumented** features of ADS! Therefore, there is a chance that it will stop working under a new release of ADS. The current version of the interface **has been tested with ADS 2016.1, 2017 and 2019**.
+> **Warning!** The interface uses **undocumented** features of ADS! Therefore, there is a chance that it will stop working under a new release of ADS. The current version of the interface **has been tested with ADS 2016.1, 2017, 2019 and 2022**.
 
-> **NOTE** also that the interface has been heavily used for simulations using **Harmonic balance** solver in ADS. It should work with other solvers as well, but it is not guaranteed.
+> **NOTE** also that the interface has been used for simulations using **Harmonic balance** solver in ADS. It should work with other solvers as well, but it is not guaranteed.
 
 # Features
 

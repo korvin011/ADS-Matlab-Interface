@@ -6,13 +6,13 @@ classdef  TADSInterface < handle
     
     properties (Constant, Access = private)
 %         SETTINGS_FILE = fullfile(prefdir,'ADSInterfaceSettings.mat');
-        FVersion = '1.3'
-        FADSVersion = '2016.01, 2017, 2019'
+        FVersion = '1.4'
+        FADSVersion = '2016.01, 2017, 2019, 2022'
 %         FToolboxAuthor = 'Oleg Iupikov, lichne@gmail.com, oleg.iupikov@chalmers.se';
-        FToolboxAuthor = 'Oleg Iupikov, <a href="mailto:lichne@gmail.com">lichne@gmail.com</a>, <a href="mailto:oleg.iupikov@chalmers.se">oleg.iupikov@chalmers.se</a>';
+        FToolboxAuthor = 'Oleg Iupikov, <a href="mailto:oleg.iupikov@chalmers.se">oleg.iupikov@chalmers.se</a>';
         FOrganization = 'Chalmers University of Technology, Sweden';
         FFirstEdit = '21-02-2018';
-        FLastEdit  = '13-07-2019';
+        FLastEdit  = '12-03-2022';
     end
     
     % properties that can be used from outside through dependent properties (see next section)
@@ -573,10 +573,10 @@ classdef  TADSInterface < handle
         function PrintHeader(this)
             this.fprintf(2,'\n');
             this.fprintf(2,'*****************************************************************************\n');
-            this.fprintf(2,'***                      <strong>ADS interface v%s</strong>                           ***\n', this.FVersion);
-            this.fprintf(3,'***                Tested with ADS v%s                   ***\n', this.FADSVersion);
+            this.fprintf(2,'***                         <strong>ADS interface v%s</strong>                            ***\n', this.FVersion);
+            this.fprintf(3,'***             Tested with ADS v%s                ***\n', this.FADSVersion);
             this.fprintf(3,'***             %s                 ***\n', this.FOrganization);
-            this.fprintf(3,'***      %s         ***\n', this.FToolboxAuthor);
+            this.fprintf(3,'***               %s                  ***\n', this.FToolboxAuthor);
             this.fprintf(3,'***                      Last edit:  %s                           ***\n', this.FLastEdit);
 %             this.fprintf(3,'***                       Today: %s                               ***\n', datestr(now,'dd-mm-yyyy'));
             this.fprintf(2,'*****************************************************************************\n');
@@ -1375,6 +1375,9 @@ classdef  TADSInterface < handle
             %PATH%
             % set ADS_LICENSE_FILE=<port@license-server-machine>
             
+            % repace all / and \ by the filesep
+            ADSInstallationDirectory = strrep(ADSInstallationDirectory,'/',filesep);
+            ADSInstallationDirectory = strrep(ADSInstallationDirectory,'\',filesep);
             % check that specified directory exists
             assert(exist(ADSInstallationDirectory,'dir')>0, 'ADSInterface:SetPaths:ADSDirNotFound', 'Specified directory "%s" does not exist. Please specify correct ADS installation directory.', ADSInstallationDirectory);
             % remove trailing "\" (Windows) or "/" (other) if any
@@ -1424,9 +1427,13 @@ classdef  TADSInterface < handle
             % enviromental variable only in the context of the current
             % Matlab session. To set the paths permanently, one should use
             % windows' "setx" command, which will be used if
-            % SetPathsPermanently is true.
+            % SetPathsPermanently is true (default value is false).
             
-            if nargin<3, SetPathsPermanently = true; end
+            if nargin<3, SetPathsPermanently = false; end
+            
+            % repace all / and \ by the filesep
+            ADSInstallationDirectory = strrep(ADSInstallationDirectory,'/',filesep);
+            ADSInstallationDirectory = strrep(ADSInstallationDirectory,'\',filesep);
             
             % if everything is fine, return
             if this.CheckADSPaths(ADSInstallationDirectory, false)
@@ -1462,26 +1469,24 @@ classdef  TADSInterface < handle
                 end
                 
                 % set paths
-                Paths = strsplit(getenv('PATH'), ';');
+                % ... get current PATH
+                strPath = getenv('PATH');
+                strPath = strrep(strPath,';;',';');
+                Paths = strsplit(strPath, ';');
+                Paths(cellfun(@(c)isempty(c),Paths)) = [];
                 % ... remove trailing "\" (Windows) or "/" (other) if any
                 for ip=1:length(PathStrings)
                     if Paths{ip}(end)==filesep,  Paths{ip} = Paths{ip}(1:end-1);  end  
                 end
-                % ... set
-                PathsToAdd = '';
-                for ip=1:length(PathStrings)
-                    % to avoid possible duplicates, do not add the path to PATH if it is already there 
-                    if any(strcmpi(Paths,PathStrings{ip})),  continue;  end
-                    % add:
-                    % ... just for this session of Matlab  
-                    setenv('PATH', [getenv('PATH') ';' PathStrings{ip}]);
-                    % ... and globally (will take effect after Matalb restart) 
-                    if SetPathsPermanently
-                        PathsToAdd = [PathsToAdd ';' PathStrings{ip}]; %#ok<AGROW>
-                    end 
-                end
-                if SetPathsPermanently && ~isempty(PathsToAdd)
-                    [status,cmdout] = system(['setx PATH "%PATH%' PathsToAdd '"']);
+                % ... form new PATH  
+                Paths = unique([Paths PathStrings], 'stable');
+                strPath = sprintf('%s;',Paths{:});
+                strPath(end) = '';
+                % ... set for this session of Matlab  
+                setenv('PATH', strPath);
+                % ... set globally (will take effect after Matalb restart)
+                if SetPathsPermanently && ~isempty(strPath)
+                    [status,cmdout] = system(['setx PATH "' strPath '"']);
                     assert(status==0, 'ADSInterface:SetPaths:CannotSetPATHEnvVar', 'Cannot set the paths "%s" to the environmental variable "PATH". The system message is:\n%s', PathsToAdd, cmdout);
                 end 
                 
@@ -1536,6 +1541,7 @@ classdef  TADSInterface < handle
             % Check that ADS simulator is available 
             BinDir = PathStrings{1};
             if ~exist(fullfile(BinDir,'hpeesofsim.exe'), 'file')
+                assert(~ThrowError, 'ADSInterface:SetPaths:NoSolverFound', 'The ADS solver executable "hpeesofsim.exe" was not found.');
                 return
             end
             
@@ -1552,7 +1558,9 @@ classdef  TADSInterface < handle
         function DSs = ReadDataset(this, DatasetFile, varargin)   
             if nargin>=2,  this.FDatasetFile = DatasetFile;  end
             assert(~isempty(this.FDatasetFile), 'ADSInterface:ReadDataset:DatasetFileNotSpecified', 'Please specify a dataset file first in "DatasetFile" property or as argument to this function.');
-            assert(exist(this.FDatasetFile,'file')>0, 'Dataset file "%s" does not exist.', this.FDatasetFile);
+            if nargin<=2 || (nargin>2 && varargin{1})
+                assert(exist(this.FDatasetFile,'file')>0, 'Dataset file "%s" does not exist.', this.FDatasetFile);
+            end
             
             DSs = this.dsReadADSDataset(this.FDatasetFile, varargin{:});
             this.FDataset = DSs;
